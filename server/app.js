@@ -1,5 +1,6 @@
 const express = require("express");
-
+const dotenv = require("dotenv")
+dotenv.config();
 const app = express();
 
 app.use(express.static('public'))
@@ -10,7 +11,7 @@ app.get("/",(req,res)=>{
     res.sendFile(__dirname+"/public/index.html");
 })
 
-
-app.listen(5000,()=>{
-    console.log("Server started at port 5000");
+const PORT = process.env.PORT||5000
+app.listen(PORT||5000,()=>{
+    console.log(`Server started at port ${PORT}`);
 })
